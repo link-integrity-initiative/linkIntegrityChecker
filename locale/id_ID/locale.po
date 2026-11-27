@@ -1,0 +1,343 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Link Integrity Checker 0.5.3\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"MIME-Version: 1.0\n"
+"Language-Team: Indonesian\n"
+"Last-Translator: Periódico Tchê Química / WebSotto (tradução automática, sem revisão por falante nativo)\n"
+"PO-Revision-Date: 2026-11-08 00:00-0300\n"
+"Language: id_ID\n"
+
+msgid "plugins.generic.linkIntegrity.displayName"
+msgstr "Pemeriksa Integritas Tautan"
+
+msgid "plugins.generic.linkIntegrity.description"
+msgstr "Memeriksa tautan dan DOI artikel yang telah terbit, menandai yang rusak beserta kemungkinan penyebabnya."
+
+msgid "plugins.generic.linkIntegrity.subtitle"
+msgstr "Pemantauan tautan dan DOI artikel yang terbit di jurnal ini."
+
+msgid "plugins.generic.linkIntegrity.blockLinks"
+msgstr "TAUTAN"
+
+msgid "plugins.generic.linkIntegrity.blockDoi"
+msgstr "DOI"
+
+msgid "plugins.generic.linkIntegrity.healthGeneral"
+msgstr "Kondisi umum sistem"
+
+msgid "plugins.generic.linkIntegrity.healthExcellent"
+msgstr "Sangat baik"
+
+msgid "plugins.generic.linkIntegrity.healthGood"
+msgstr "Baik"
+
+msgid "plugins.generic.linkIntegrity.healthAttention"
+msgstr "Perhatian"
+
+msgid "plugins.generic.linkIntegrity.healthCritical"
+msgstr "Kritis"
+
+msgid "plugins.generic.linkIntegrity.reportTitle"
+msgstr "Laporan Penyebab dan Solusi"
+
+msgid "plugins.generic.linkIntegrity.filterAll"
+msgstr "Semua"
+
+msgid "plugins.generic.linkIntegrity.filterBroken"
+msgstr "Bermasalah"
+
+msgid "plugins.generic.linkIntegrity.filterAttention"
+msgstr "Perhatian"
+
+msgid "plugins.generic.linkIntegrity.filterOk"
+msgstr "OK"
+
+msgid "plugins.generic.linkIntegrity.testAll"
+msgstr "Uji Semua"
+
+msgid "plugins.generic.linkIntegrity.report"
+msgstr "Lihat Laporan"
+
+msgid "plugins.generic.linkIntegrity.search"
+msgstr "Cari berdasarkan judul, DOI, atau ID..."
+
+msgid "plugins.generic.linkIntegrity.progress"
+msgstr "Kemajuan"
+
+msgid "plugins.generic.linkIntegrity.colId"
+msgstr "ID"
+
+msgid "plugins.generic.linkIntegrity.colTitle"
+msgstr "Judul"
+
+msgid "plugins.generic.linkIntegrity.colDoi"
+msgstr "DOI"
+
+msgid "plugins.generic.linkIntegrity.colLink"
+msgstr "Tautan"
+
+msgid "plugins.generic.linkIntegrity.colStatusDoi"
+msgstr "Status DOI"
+
+msgid "plugins.generic.linkIntegrity.colStatusLink"
+msgstr "Status Tautan"
+
+msgid "plugins.generic.linkIntegrity.colAction"
+msgstr "Tindakan"
+
+msgid "plugins.generic.linkIntegrity.testOne"
+msgstr "Uji"
+
+msgid "plugins.generic.linkIntegrity.statusOk"
+msgstr "OK"
+
+msgid "plugins.generic.linkIntegrity.statusBroken"
+msgstr "RUSAK"
+
+msgid "plugins.generic.linkIntegrity.statusAttention"
+msgstr "PERHATIAN"
+
+msgid "plugins.generic.linkIntegrity.statusPending"
+msgstr "Menunggu"
+
+msgid "plugins.generic.linkIntegrity.statusTesting"
+msgstr "Sedang diuji..."
+
+msgid "plugins.generic.linkIntegrity.causeNotFound"
+msgstr "Berkas tidak ditemukan (404)"
+
+msgid "plugins.generic.linkIntegrity.causeTimeout"
+msgstr "Server tidak merespons (waktu habis/koneksi)"
+
+msgid "plugins.generic.linkIntegrity.causeDenied"
+msgstr "Akses ditolak (403)"
+
+msgid "plugins.generic.linkIntegrity.causeServerError"
+msgstr "Kesalahan internal server (5xx)"
+
+msgid "plugins.generic.linkIntegrity.causeOther4xx"
+msgstr "Kesalahan klien lainnya (4xx)"
+
+msgid "plugins.generic.linkIntegrity.solutionNotFound"
+msgstr "Berkas mungkin telah dipindahkan, diganti nama, atau dihapus. Periksa galley atau berkas artikel tersebut."
+
+msgid "plugins.generic.linkIntegrity.solutionTimeout"
+msgstr "Bisa jadi gangguan sementara pada server atau jaringan. Uji ulang sebelum mengubah tautan."
+
+msgid "plugins.generic.linkIntegrity.solutionDenied"
+msgstr "Periksa izin berkas atau aturan pemblokiran (.htaccess/mod_security) pada server tujuan."
+
+msgid "plugins.generic.linkIntegrity.solutionServerError"
+msgstr "Masalah pada server tujuan. Pertimbangkan menghubungi penyedia hosting yang bertanggung jawab."
+
+msgid "plugins.generic.linkIntegrity.solutionOther4xx"
+msgstr "Kode kesalahan tidak lazim — periksa secara manual."
+
+msgid "plugins.generic.linkIntegrity.affectedRecords"
+msgstr "entri terdampak"
+
+msgid "plugins.generic.linkIntegrity.noProblemsFound"
+msgstr "🎉 Tidak ditemukan masalah pada item yang diuji."
+
+msgid "plugins.generic.linkIntegrity.noArticles"
+msgstr "Tidak ditemukan artikel terbit di jurnal ini."
+
+msgid "plugins.generic.linkIntegrity.openDashboard"
+msgstr "Buka pemeriksa"
+
+msgid "plugins.generic.linkIntegrity.causeBlocked"
+msgstr "URL diblokir oleh kebijakan keamanan"
+
+msgid "plugins.generic.linkIntegrity.solutionBlocked"
+msgstr "Alamat mengarah ke jaringan internal server, atau memakai porta maupun protokol yang tidak diizinkan. Periksa URL yang terdaftar pada galley: alamatnya harus publik, http atau https."
+
+msgid "plugins.generic.linkIntegrity.causeTls"
+msgstr "Sertifikat TLS tidak sah"
+
+msgid "plugins.generic.linkIntegrity.solutionTls"
+msgstr "Sertifikat server tujuan telah kedaluwarsa, ditandatangani sendiri, atau tidak cocok dengan domainnya. Pembaca pun akan melihat peringatan keamanan peramban saat membuka tautan ini."
+
+msgid "plugins.generic.linkIntegrity.sessionExpired"
+msgstr "Sesi Anda telah berakhir. Muat ulang halaman dan masuk kembali untuk melanjutkan pemeriksaan."
+
+msgid "plugins.generic.linkIntegrity.credits"
+msgstr "Dikembangkan bersama oleh"
+
+msgid "plugins.generic.linkIntegrity.history"
+msgstr "Riwayat versi"
+
+msgid "plugins.generic.linkIntegrity.checkUpdate"
+msgstr "Periksa apakah ada versi lebih baru"
+
+msgid "plugins.generic.linkIntegrity.updChecking"
+msgstr "Menghubungi server..."
+
+msgid "plugins.generic.linkIntegrity.updCurrent"
+msgstr "Anda memakai versi terbaru."
+
+msgid "plugins.generic.linkIntegrity.updAvailable"
+msgstr "Tersedia versi lebih baru: %s."
+
+msgid "plugins.generic.linkIntegrity.updDownload"
+msgstr "Unduh pembaruan"
+
+msgid "plugins.generic.linkIntegrity.updUnreachable"
+msgstr "Server versi tidak dapat dihubungi."
+
+msgid "plugins.generic.linkIntegrity.guideTitle"
+msgstr "Cara membaca hasilnya"
+
+msgid "plugins.generic.linkIntegrity.guideIntro"
+msgstr "Setiap artikel diperiksa pada dua sisi yang saling bebas: alamat halaman artikel (TAUTAN) dan entri DOI. Keempat keadaan di bawah berlaku untuk keduanya."
+
+msgid "plugins.generic.linkIntegrity.guideStatuses"
+msgstr "Keadaan"
+
+msgid "plugins.generic.linkIntegrity.guideCauses"
+msgstr "Penyebab kerusakan dan tindakannya"
+
+msgid "plugins.generic.linkIntegrity.explainOk"
+msgstr "Alamat merespons dengan normal. Tidak ada yang perlu dilakukan."
+
+msgid "plugins.generic.linkIntegrity.explainBroken"
+msgstr "Alamat tidak merespons sebagaimana mestinya. Penyebabnya muncul saat kursor diarahkan ke sel status, dan solusi yang disarankan ada di laporan."
+
+msgid "plugins.generic.linkIntegrity.explainAttention"
+msgstr "Tidak ada yang bisa diperiksa: artikel belum punya DOI terdaftar, atau belum punya galley terbit. Ini bukan tautan rusak, melainkan data yang belum ada di OJS."
+
+msgid "plugins.generic.linkIntegrity.explainPending"
+msgstr "Belum diperiksa pada sesi ini. Gunakan Uji Semua, atau tombol Uji pada barisnya."
+
+msgid "plugins.generic.linkIntegrity.guideHealth"
+msgstr "Kondisi umum adalah rata-rata persentase TAUTAN dan DOI yang merespons dengan baik. Entri berstatus PERHATIAN tidak diikutkan, karena memang belum diuji."
+
+msgid "plugins.generic.linkIntegrity.healthLinksLabel"
+msgstr "Kondisi TAUTAN"
+
+msgid "plugins.generic.linkIntegrity.healthDoiLabel"
+msgstr "Kondisi DOI"
+
+msgid "plugins.generic.linkIntegrity.healthOverallLabel"
+msgstr "Kondisi umum (terbobot)"
+
+msgid "plugins.generic.linkIntegrity.coverage"
+msgstr "%1 dari %2 pemeriksaan telah dilakukan"
+
+msgid "plugins.generic.linkIntegrity.coverageNone"
+msgstr "belum ada yang diperiksa"
+
+msgid "plugins.generic.linkIntegrity.guideWeighted"
+msgstr "Kondisi umum adalah rata-rata terbobot menurut jumlah: menjumlahkan semua entri yang merespons dengan baik, baik TAUTAN maupun DOI, lalu membaginya dengan total entri yang benar-benar diperiksa. Entri berstatus PERHATIAN tidak diikutkan, karena tidak ada yang bisa diperiksa padanya — itulah sebabnya baris cakupan menunjukkan berapa banyak dari pemeriksaan yang mungkin benar-benar dijalankan. Nilai tinggi dengan cakupan rendah tidak berarti jurnal dalam keadaan baik: artinya sedikit yang diuji."
+
+msgid "plugins.generic.linkIntegrity.themeLabel"
+msgstr "Palet:"
+
+msgid "plugins.generic.linkIntegrity.themeTq"
+msgstr "Tchê"
+
+msgid "plugins.generic.linkIntegrity.themeSotto"
+msgstr "Sotto"
+
+msgid "plugins.generic.linkIntegrity.themeDeBoni"
+msgstr "De Boni"
+
+msgid "plugins.generic.linkIntegrity.themePastel"
+msgstr "Pastel"
+
+msgid "plugins.generic.linkIntegrity.themeMono"
+msgstr "Biru dan hitam"
+
+msgid "plugins.generic.linkIntegrity.checkUpdateTip"
+msgstr "Menghubungi server Periódico Tchê Química. Mengirim versi plugin, versi OJS, serta nama dan alamat jurnal ini — tanpa data pribadi."
+
+msgid "plugins.generic.linkIntegrity.causeRedirect"
+msgstr "Pengalihan tanpa tujuan akhir"
+
+msgid "plugins.generic.linkIntegrity.solutionRedirect"
+msgstr "Alamat mengalihkan secara berputar, atau ke tujuan yang tidak terpecahkan, atau melampaui batas pengalihan. Periksa URL yang terdaftar dan aturan penulisan ulang pada server."
+
+msgid "plugins.generic.linkIntegrity.causeInvalidFile"
+msgstr "Berkas yang dikirim bukan PDF yang sah"
+
+msgid "plugins.generic.linkIntegrity.solutionInvalidFile"
+msgstr "Server menjawab 200, tetapi isinya tidak diawali tanda tangan PDF. Berkas mungkin rusak saat diunggah atau tergantikan oleh jenis lain. Unduh dan buka untuk memeriksa; bila tidak terbuka, unggah ulang galley-nya."
+
+msgid "plugins.generic.linkIntegrity.causeTruncatedFile"
+msgstr "PDF terpotong (tanpa penanda akhir)"
+
+msgid "plugins.generic.linkIntegrity.solutionTruncatedFile"
+msgstr "Berkas diawali sebagai PDF tetapi tidak diakhiri %%EOF, pertanda unggahan terputus atau salinan tidak utuh. Penampil melaporkan \\\"Invalid PDF structure\\\" dan halaman tetap kosong. Unggah ulang berkas aslinya."
+
+msgid "plugins.generic.linkIntegrity.causeErrorPage"
+msgstr "Halaman HTML menggantikan berkas"
+
+msgid "plugins.generic.linkIntegrity.solutionErrorPage"
+msgstr "Alamat mengembalikan halaman HTML berstatus 200, bukan berkasnya. Biasanya berupa layar kesalahan, pemberitahuan masuk, atau pemblokiran server. Buka alamat itu di jendela penyamaran untuk melihat apa yang diterima pembaca."
+
+msgid "plugins.generic.linkIntegrity.causeEmptyFile"
+msgstr "Berkas kosong"
+
+msgid "plugins.generic.linkIntegrity.solutionEmptyFile"
+msgstr "Server menjawab 200 dengan nol bita. Entrinya ada, tetapi tidak ada isi bagi pembaca. Unggah ulang galley-nya."
+
+msgid "plugins.generic.linkIntegrity.statusContent"
+msgstr "BERKAS"
+
+msgid "plugins.generic.linkIntegrity.filterContent"
+msgstr "Berkas"
+
+msgid "plugins.generic.linkIntegrity.explainContent"
+msgstr "Alamat merespons, tetapi berkas yang dikirim tidak dapat dipakai: rusak, terpotong, kosong, atau server justru mengembalikan halaman HTML. Berbeda dengan RUSAK, yang alamatnya sama sekali tidak merespons. Penyebab persisnya muncul saat kursor diarahkan dan di laporan."
+
+msgid "plugins.generic.linkIntegrity.scopeBoth"
+msgstr "Keduanya"
+
+msgid "plugins.generic.linkIntegrity.scopeDoi"
+msgstr "Hanya DOI"
+
+msgid "plugins.generic.linkIntegrity.scopeLink"
+msgstr "Hanya Tautan"
+
+msgid "plugins.generic.linkIntegrity.scopeTip"
+msgstr "Menentukan pada pemeriksaan mana filter keadaan diterapkan. Dengan \\\"Keduanya\\\", baris muncul bila DOI atau tautannya berada pada keadaan yang dipilih."
+
+msgid "plugins.generic.linkIntegrity.optPublicPage"
+msgstr "Terbitkan halaman transparansi"
+
+msgid "plugins.generic.linkIntegrity.optPublicFooter"
+msgstr "Tampilkan kredit dan riwayat di sana"
+
+msgid "plugins.generic.linkIntegrity.optOpenPublic"
+msgstr "Buka halaman publik"
+
+msgid "plugins.generic.linkIntegrity.optSaving"
+msgstr "Menyimpan..."
+
+msgid "plugins.generic.linkIntegrity.optSaved"
+msgstr "Tersimpan."
+
+msgid "plugins.generic.linkIntegrity.optFailed"
+msgstr "Tidak dapat menyimpan."
+
+msgid "plugins.generic.linkIntegrity.publicTitle"
+msgstr "Integritas tautan dan DOI"
+
+msgid "plugins.generic.linkIntegrity.publicIntro"
+msgstr "Jurnal ini secara berkala memeriksa alamat artikel-artikelnya dan entri DOI-nya."
+
+msgid "plugins.generic.linkIntegrity.publicLastCheck"
+msgstr "Terakhir diperiksa pada"
+
+msgid "plugins.generic.linkIntegrity.publicArticles"
+msgstr "artikel terbit"
+
+msgid "plugins.generic.linkIntegrity.publicChecked"
+msgstr "diperiksa"
+
+msgid "plugins.generic.linkIntegrity.publicNote"
+msgstr "Persentase hanya memperhitungkan entri yang benar-benar diperiksa. Entri berstatus PERHATIAN adalah yang belum punya DOI terdaftar atau belum punya galley terbit, dan tidak diikutkan dalam perhitungan."
+
+msgid "plugins.generic.linkIntegrity.publicNoData"
+msgstr "Belum ada pemeriksaan yang selesai."

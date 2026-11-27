@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE version SYSTEM "../../../lib/pkp/dtd/pluginVersion.dtd">
+<!--
+  * version.xml
+  *
+  * Link Integrity Checker
+  * Copyright (c) 2026 Periódico Tchê Química / WebSotto (https://websotto.com.br/)
+  * Distributed under the GNU General Public License v3.0 (or later).
+  * See LICENSE for details.
+  *
+  * Informação de versão do plugin.
+  *
+  * Os elementos permitidos e sua ordem são fixados por
+  * lib/pkp/dtd/pluginVersion.dtd:
+  *   (application, type, release, tag?, date, lazy-load?, sitewide?, class?)
+  * Qualquer outro elemento é ignorado pelo OJS ao instalar o plugin.
+  *
+  * A compatibilidade com OJS 3.3 / 3.4 / 3.5 está documentada no README.md
+  * e no CHANGELOG.md: o OJS não lê essa informação do version.xml.
+  -->
+<version>
+    <application>linkIntegrityChecker</application>
+    <type>plugins.generic</type>
+    <release>0.5.3.0</release>
+    <date>2026-11-18</date>
+    <lazy-load>1</lazy-load>
+    <sitewide>0</sitewide>
+    <class>LinkIntegrityCheckerPlugin</class>
+</version>

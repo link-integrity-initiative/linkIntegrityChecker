@@ -1,0 +1,343 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Link Integrity Checker 0.5.3\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"MIME-Version: 1.0\n"
+"Language-Team: Turkish\n"
+"Last-Translator: Periódico Tchê Química / WebSotto (tradução automática, sem revisão por falante nativo)\n"
+"PO-Revision-Date: 2026-11-08 00:00-0300\n"
+"Language: tr_TR\n"
+
+msgid "plugins.generic.linkIntegrity.displayName"
+msgstr "Bağlantı Bütünlüğü Denetleyicisi"
+
+msgid "plugins.generic.linkIntegrity.description"
+msgstr "Yayımlanmış makalelerin bağlantılarını ve DOI kayıtlarını denetler; bozuk olanları ve olası nedenini bildirir."
+
+msgid "plugins.generic.linkIntegrity.subtitle"
+msgstr "Bu dergide yayımlanan makalelerin bağlantılarının ve DOI kayıtlarının izlenmesi."
+
+msgid "plugins.generic.linkIntegrity.blockLinks"
+msgstr "BAĞLANTILAR"
+
+msgid "plugins.generic.linkIntegrity.blockDoi"
+msgstr "DOI"
+
+msgid "plugins.generic.linkIntegrity.healthGeneral"
+msgstr "Sistemin genel durumu"
+
+msgid "plugins.generic.linkIntegrity.healthExcellent"
+msgstr "Mükemmel"
+
+msgid "plugins.generic.linkIntegrity.healthGood"
+msgstr "İyi"
+
+msgid "plugins.generic.linkIntegrity.healthAttention"
+msgstr "Dikkat"
+
+msgid "plugins.generic.linkIntegrity.healthCritical"
+msgstr "Kritik"
+
+msgid "plugins.generic.linkIntegrity.reportTitle"
+msgstr "Nedenler ve Çözümler Raporu"
+
+msgid "plugins.generic.linkIntegrity.filterAll"
+msgstr "Tümü"
+
+msgid "plugins.generic.linkIntegrity.filterBroken"
+msgstr "Sorunlular"
+
+msgid "plugins.generic.linkIntegrity.filterAttention"
+msgstr "Dikkat"
+
+msgid "plugins.generic.linkIntegrity.filterOk"
+msgstr "OK"
+
+msgid "plugins.generic.linkIntegrity.testAll"
+msgstr "Tümünü Sına"
+
+msgid "plugins.generic.linkIntegrity.report"
+msgstr "Raporu Gör"
+
+msgid "plugins.generic.linkIntegrity.search"
+msgstr "Başlığa, DOI'ye veya kimliğe göre ara..."
+
+msgid "plugins.generic.linkIntegrity.progress"
+msgstr "İlerleme"
+
+msgid "plugins.generic.linkIntegrity.colId"
+msgstr "Kimlik"
+
+msgid "plugins.generic.linkIntegrity.colTitle"
+msgstr "Başlık"
+
+msgid "plugins.generic.linkIntegrity.colDoi"
+msgstr "DOI"
+
+msgid "plugins.generic.linkIntegrity.colLink"
+msgstr "Bağlantı"
+
+msgid "plugins.generic.linkIntegrity.colStatusDoi"
+msgstr "DOI Durumu"
+
+msgid "plugins.generic.linkIntegrity.colStatusLink"
+msgstr "Bağlantı Durumu"
+
+msgid "plugins.generic.linkIntegrity.colAction"
+msgstr "İşlem"
+
+msgid "plugins.generic.linkIntegrity.testOne"
+msgstr "Sına"
+
+msgid "plugins.generic.linkIntegrity.statusOk"
+msgstr "OK"
+
+msgid "plugins.generic.linkIntegrity.statusBroken"
+msgstr "BOZUK"
+
+msgid "plugins.generic.linkIntegrity.statusAttention"
+msgstr "DİKKAT"
+
+msgid "plugins.generic.linkIntegrity.statusPending"
+msgstr "Bekliyor"
+
+msgid "plugins.generic.linkIntegrity.statusTesting"
+msgstr "Sınanıyor..."
+
+msgid "plugins.generic.linkIntegrity.causeNotFound"
+msgstr "Dosya bulunamadı (404)"
+
+msgid "plugins.generic.linkIntegrity.causeTimeout"
+msgstr "Sunucu yanıt vermedi (zaman aşımı/bağlantı)"
+
+msgid "plugins.generic.linkIntegrity.causeDenied"
+msgstr "Erişim reddedildi (403)"
+
+msgid "plugins.generic.linkIntegrity.causeServerError"
+msgstr "Sunucu iç hatası (5xx)"
+
+msgid "plugins.generic.linkIntegrity.causeOther4xx"
+msgstr "Başka bir istemci hatası (4xx)"
+
+msgid "plugins.generic.linkIntegrity.solutionNotFound"
+msgstr "Dosya taşınmış, yeniden adlandırılmış veya silinmiş olabilir. Makalenin dizgisini ya da dosyasını denetleyin."
+
+msgid "plugins.generic.linkIntegrity.solutionTimeout"
+msgstr "Sunucuda veya ağda geçici bir kararsızlık olabilir. Bağlantıyı değiştirmeden önce yeniden sınayın."
+
+msgid "plugins.generic.linkIntegrity.solutionDenied"
+msgstr "Hedef sunucudaki dosya izinlerini veya engelleme kurallarını (.htaccess/mod_security) denetleyin."
+
+msgid "plugins.generic.linkIntegrity.solutionServerError"
+msgstr "Hedef sunucuda sorun var. Sorumlu barındırma sağlayıcısıyla görüşmeyi değerlendirin."
+
+msgid "plugins.generic.linkIntegrity.solutionOther4xx"
+msgstr "Alışılmadık hata kodu — elle denetleyin."
+
+msgid "plugins.generic.linkIntegrity.affectedRecords"
+msgstr "etkilenen kayıt"
+
+msgid "plugins.generic.linkIntegrity.noProblemsFound"
+msgstr "🎉 Sınanan öğelerde sorun bulunamadı."
+
+msgid "plugins.generic.linkIntegrity.noArticles"
+msgstr "Bu dergide yayımlanmış makale bulunamadı."
+
+msgid "plugins.generic.linkIntegrity.openDashboard"
+msgstr "Denetleyiciyi aç"
+
+msgid "plugins.generic.linkIntegrity.causeBlocked"
+msgstr "URL güvenlik ilkesince engellendi"
+
+msgid "plugins.generic.linkIntegrity.solutionBlocked"
+msgstr "Adres sunucunun iç ağına işaret ediyor ya da izin verilmeyen bir kapı veya protokol kullanıyor. Dizgide kayıtlı URL'yi denetleyin: herkese açık bir http veya https adresi olmalıdır."
+
+msgid "plugins.generic.linkIntegrity.causeTls"
+msgstr "Geçersiz TLS sertifikası"
+
+msgid "plugins.generic.linkIntegrity.solutionTls"
+msgstr "Hedef sunucunun sertifikasının süresi dolmuş, kendinden imzalı ya da alan adıyla uyuşmuyor. Okurlar da bu bağlantıyı açarken tarayıcıdan güvenlik uyarısı alacaktır."
+
+msgid "plugins.generic.linkIntegrity.sessionExpired"
+msgstr "Oturumunuzun süresi doldu. Denetime devam etmek için sayfayı yenileyip yeniden oturum açın."
+
+msgid "plugins.generic.linkIntegrity.credits"
+msgstr "Şu kurumların iş birliğiyle geliştirildi:"
+
+msgid "plugins.generic.linkIntegrity.history"
+msgstr "Sürüm geçmişi"
+
+msgid "plugins.generic.linkIntegrity.checkUpdate"
+msgstr "Daha yeni sürüm var mı denetle"
+
+msgid "plugins.generic.linkIntegrity.updChecking"
+msgstr "Sunucuya başvuruluyor..."
+
+msgid "plugins.generic.linkIntegrity.updCurrent"
+msgstr "En güncel sürümü kullanıyorsunuz."
+
+msgid "plugins.generic.linkIntegrity.updAvailable"
+msgstr "Daha yeni bir sürüm var: %s."
+
+msgid "plugins.generic.linkIntegrity.updDownload"
+msgstr "Güncellemeyi indir"
+
+msgid "plugins.generic.linkIntegrity.updUnreachable"
+msgstr "Sürüm sunucusuna ulaşılamadı."
+
+msgid "plugins.generic.linkIntegrity.guideTitle"
+msgstr "Sonuçlar nasıl okunur"
+
+msgid "plugins.generic.linkIntegrity.guideIntro"
+msgstr "Her makale birbirinden bağımsız iki yönden denetlenir: makale sayfasının adresi (BAĞLANTI) ve DOI kaydı. Aşağıdaki dört durum her ikisi için de geçerlidir."
+
+msgid "plugins.generic.linkIntegrity.guideStatuses"
+msgstr "Durumlar"
+
+msgid "plugins.generic.linkIntegrity.guideCauses"
+msgstr "Bozulma nedenleri ve yapılacaklar"
+
+msgid "plugins.generic.linkIntegrity.explainOk"
+msgstr "Adres olağan biçimde yanıt verdi. Yapılacak bir şey yok."
+
+msgid "plugins.generic.linkIntegrity.explainBroken"
+msgstr "Adres olması gerektiği gibi yanıt vermedi. Neden, durum hücresinin üzerine gelindiğinde görünür; önerilen çözüm raporda yer alır."
+
+msgid "plugins.generic.linkIntegrity.explainAttention"
+msgstr "Denetlenecek bir şey yok: makalenin kayıtlı DOI'si ya da yayımlanmış dizgisi yok. Bu bozuk bir bağlantı değil, OJS'de eksik bir veridir."
+
+msgid "plugins.generic.linkIntegrity.explainPending"
+msgstr "Bu oturumda henüz denetlenmedi. Tümünü Sına'yı ya da satırdaki Sına düğmesini kullanın."
+
+msgid "plugins.generic.linkIntegrity.guideHealth"
+msgstr "Genel durum, iyi yanıt veren BAĞLANTILAR ile DOI'lerin yüzdelerinin ortalamasıdır. DİKKAT durumundaki kayıtlar sınanmadıkları için hesaba katılmaz."
+
+msgid "plugins.generic.linkIntegrity.healthLinksLabel"
+msgstr "BAĞLANTILARIN durumu"
+
+msgid "plugins.generic.linkIntegrity.healthDoiLabel"
+msgstr "DOI'lerin durumu"
+
+msgid "plugins.generic.linkIntegrity.healthOverallLabel"
+msgstr "Genel durum (ağırlıklı)"
+
+msgid "plugins.generic.linkIntegrity.coverage"
+msgstr "%2 denetimden %1 tanesi yapıldı"
+
+msgid "plugins.generic.linkIntegrity.coverageNone"
+msgstr "henüz hiçbir şey denetlenmedi"
+
+msgid "plugins.generic.linkIntegrity.guideWeighted"
+msgstr "Genel durum, sayıya göre ağırlıklı bir ortalamadır: iyi yanıt veren tüm kayıtları, hem BAĞLANTILARI hem DOI'leri toplar ve gerçekten denetlenen kayıt sayısına böler. DİKKAT durumundaki kayıtlar dışarıda kalır, çünkü onlarda denetlenecek bir şey yoktur — kapsam satırının, olası denetimlerin kaçının gerçekten yapıldığını göstermesinin nedeni budur. Kapsamı düşükken yüksek çıkan bir değer derginin sağlam olduğu anlamına gelmez; az şeyin sınandığı anlamına gelir."
+
+msgid "plugins.generic.linkIntegrity.themeLabel"
+msgstr "Palet:"
+
+msgid "plugins.generic.linkIntegrity.themeTq"
+msgstr "Tchê"
+
+msgid "plugins.generic.linkIntegrity.themeSotto"
+msgstr "Sotto"
+
+msgid "plugins.generic.linkIntegrity.themeDeBoni"
+msgstr "De Boni"
+
+msgid "plugins.generic.linkIntegrity.themePastel"
+msgstr "Pastel"
+
+msgid "plugins.generic.linkIntegrity.themeMono"
+msgstr "Mavi ve siyah"
+
+msgid "plugins.generic.linkIntegrity.checkUpdateTip"
+msgstr "Periódico Tchê Química sunucusuna başvurur. Eklenti sürümünü, OJS sürümünü, bu derginin adını ve adresini gönderir — kişisel veri göndermez."
+
+msgid "plugins.generic.linkIntegrity.causeRedirect"
+msgstr "Son hedefi olmayan yönlendirme"
+
+msgid "plugins.generic.linkIntegrity.solutionRedirect"
+msgstr "Adres döngüsel olarak, ya da çözümlenmeyen bir hedefe yönlendiriyor veya yönlendirme sınırını aşıyor. Kayıtlı URL'yi ve sunucunun yeniden yazma kurallarını denetleyin."
+
+msgid "plugins.generic.linkIntegrity.causeInvalidFile"
+msgstr "Gelen dosya geçerli bir PDF değil"
+
+msgid "plugins.generic.linkIntegrity.solutionInvalidFile"
+msgstr "Sunucu 200 yanıtı verdi, ancak içerik PDF imzasıyla başlamıyor. Dosya yüklenirken bozulmuş ya da başka bir türle değiştirilmiş olabilir. İndirip açarak denetleyin; açılmıyorsa dizgiyi yeniden yükleyin."
+
+msgid "plugins.generic.linkIntegrity.causeTruncatedFile"
+msgstr "Kesilmiş PDF (bitiş imi yok)"
+
+msgid "plugins.generic.linkIntegrity.solutionTruncatedFile"
+msgstr "Dosya PDF olarak başlıyor ama %%EOF ile bitmiyor; bu, yüklemenin yarıda kaldığını ya da kopyanın eksik olduğunu gösterir. Görüntüleyici \\\"Invalid PDF structure\\\" diyor ve sayfa boş kalıyor. Özgün dosyayı yeniden yükleyin."
+
+msgid "plugins.generic.linkIntegrity.causeErrorPage"
+msgstr "Dosya yerine HTML sayfası"
+
+msgid "plugins.generic.linkIntegrity.solutionErrorPage"
+msgstr "Adres, dosya yerine 200 durumuyla bir HTML sayfası döndürdü. Bu genellikle bir hata ekranı, oturum açma uyarısı ya da sunucu engellemesidir. Okurun ne aldığını görmek için adresi gizli pencerede açın."
+
+msgid "plugins.generic.linkIntegrity.causeEmptyFile"
+msgstr "Boş dosya"
+
+msgid "plugins.generic.linkIntegrity.solutionEmptyFile"
+msgstr "Sunucu 200 yanıtını sıfır baytla verdi. Kayıt var, ama okur için içerik yok. Dizgiyi yeniden yükleyin."
+
+msgid "plugins.generic.linkIntegrity.statusContent"
+msgstr "DOSYA"
+
+msgid "plugins.generic.linkIntegrity.filterContent"
+msgstr "Dosya"
+
+msgid "plugins.generic.linkIntegrity.explainContent"
+msgstr "Adres yanıt veriyor, ama gelen dosya kullanılamaz durumda: bozuk, kesilmiş, boş ya da sunucu onun yerine bir HTML sayfası döndürmüş. Adresin hiç yanıt vermediği BOZUK durumundan farklıdır. Kesin neden, üzerine gelindiğinde ve raporda görünür."
+
+msgid "plugins.generic.linkIntegrity.scopeBoth"
+msgstr "Her ikisi"
+
+msgid "plugins.generic.linkIntegrity.scopeDoi"
+msgstr "Yalnızca DOI"
+
+msgid "plugins.generic.linkIntegrity.scopeLink"
+msgstr "Yalnızca Bağlantı"
+
+msgid "plugins.generic.linkIntegrity.scopeTip"
+msgstr "Durum süzgecinin hangi denetime uygulanacağını seçer. \\\"Her ikisi\\\" seçiliyken, DOI ya da bağlantı seçilen durumdaysa satır görünür."
+
+msgid "plugins.generic.linkIntegrity.optPublicPage"
+msgstr "Saydamlık sayfasını yayımla"
+
+msgid "plugins.generic.linkIntegrity.optPublicFooter"
+msgstr "Orada emeği geçenleri ve geçmişi göster"
+
+msgid "plugins.generic.linkIntegrity.optOpenPublic"
+msgstr "Herkese açık sayfayı aç"
+
+msgid "plugins.generic.linkIntegrity.optSaving"
+msgstr "Kaydediliyor..."
+
+msgid "plugins.generic.linkIntegrity.optSaved"
+msgstr "Kaydedildi."
+
+msgid "plugins.generic.linkIntegrity.optFailed"
+msgstr "Kaydedilemedi."
+
+msgid "plugins.generic.linkIntegrity.publicTitle"
+msgstr "Bağlantıların ve DOI'lerin bütünlüğü"
+
+msgid "plugins.generic.linkIntegrity.publicIntro"
+msgstr "Bu dergi, makalelerinin adreslerini ve DOI kayıtlarını düzenli olarak denetler."
+
+msgid "plugins.generic.linkIntegrity.publicLastCheck"
+msgstr "Son denetim tarihi:"
+
+msgid "plugins.generic.linkIntegrity.publicArticles"
+msgstr "yayımlanmış makale"
+
+msgid "plugins.generic.linkIntegrity.publicChecked"
+msgstr "denetlendi"
+
+msgid "plugins.generic.linkIntegrity.publicNote"
+msgstr "Yüzdeler yalnızca gerçekten denetlenen kayıtları dikkate alır. DİKKAT durumundaki kayıtlar, kayıtlı DOI'si ya da yayımlanmış dizgisi bulunmayanlardır ve hesabın dışında kalır."
+
+msgid "plugins.generic.linkIntegrity.publicNoData"
+msgstr "Henüz tamamlanmış bir denetim yok."

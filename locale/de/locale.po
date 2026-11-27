@@ -1,0 +1,343 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Link Integrity Checker 0.5.3\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"MIME-Version: 1.0\n"
+"Language-Team: German\n"
+"Last-Translator: Periódico Tchê Química / WebSotto (tradução automática, sem revisão por falante nativo)\n"
+"PO-Revision-Date: 2026-11-08 00:00-0300\n"
+"Language: de\n"
+
+msgid "plugins.generic.linkIntegrity.displayName"
+msgstr "Link-Integritätsprüfer"
+
+msgid "plugins.generic.linkIntegrity.description"
+msgstr "Prüft Links und DOIs veröffentlichter Artikel und weist auf defekte Einträge und deren wahrscheinliche Ursache hin."
+
+msgid "plugins.generic.linkIntegrity.subtitle"
+msgstr "Überwachung der Links und DOIs der in dieser Zeitschrift veröffentlichten Artikel."
+
+msgid "plugins.generic.linkIntegrity.blockLinks"
+msgstr "LINKS"
+
+msgid "plugins.generic.linkIntegrity.blockDoi"
+msgstr "DOI"
+
+msgid "plugins.generic.linkIntegrity.healthGeneral"
+msgstr "Gesamtzustand des Systems"
+
+msgid "plugins.generic.linkIntegrity.healthExcellent"
+msgstr "Ausgezeichnet"
+
+msgid "plugins.generic.linkIntegrity.healthGood"
+msgstr "Gut"
+
+msgid "plugins.generic.linkIntegrity.healthAttention"
+msgstr "Achtung"
+
+msgid "plugins.generic.linkIntegrity.healthCritical"
+msgstr "Kritisch"
+
+msgid "plugins.generic.linkIntegrity.reportTitle"
+msgstr "Bericht zu Ursachen und Lösungen"
+
+msgid "plugins.generic.linkIntegrity.filterAll"
+msgstr "Alle"
+
+msgid "plugins.generic.linkIntegrity.filterBroken"
+msgstr "Probleme"
+
+msgid "plugins.generic.linkIntegrity.filterAttention"
+msgstr "Achtung"
+
+msgid "plugins.generic.linkIntegrity.filterOk"
+msgstr "OK"
+
+msgid "plugins.generic.linkIntegrity.testAll"
+msgstr "Alle prüfen"
+
+msgid "plugins.generic.linkIntegrity.report"
+msgstr "Bericht anzeigen"
+
+msgid "plugins.generic.linkIntegrity.search"
+msgstr "Nach Titel, DOI oder ID suchen..."
+
+msgid "plugins.generic.linkIntegrity.progress"
+msgstr "Fortschritt"
+
+msgid "plugins.generic.linkIntegrity.colId"
+msgstr "ID"
+
+msgid "plugins.generic.linkIntegrity.colTitle"
+msgstr "Titel"
+
+msgid "plugins.generic.linkIntegrity.colDoi"
+msgstr "DOI"
+
+msgid "plugins.generic.linkIntegrity.colLink"
+msgstr "Link"
+
+msgid "plugins.generic.linkIntegrity.colStatusDoi"
+msgstr "DOI-Status"
+
+msgid "plugins.generic.linkIntegrity.colStatusLink"
+msgstr "Link-Status"
+
+msgid "plugins.generic.linkIntegrity.colAction"
+msgstr "Aktion"
+
+msgid "plugins.generic.linkIntegrity.testOne"
+msgstr "Prüfen"
+
+msgid "plugins.generic.linkIntegrity.statusOk"
+msgstr "OK"
+
+msgid "plugins.generic.linkIntegrity.statusBroken"
+msgstr "DEFEKT"
+
+msgid "plugins.generic.linkIntegrity.statusAttention"
+msgstr "ACHTUNG"
+
+msgid "plugins.generic.linkIntegrity.statusPending"
+msgstr "Ausstehend"
+
+msgid "plugins.generic.linkIntegrity.statusTesting"
+msgstr "Wird geprüft..."
+
+msgid "plugins.generic.linkIntegrity.causeNotFound"
+msgstr "Datei nicht gefunden (404)"
+
+msgid "plugins.generic.linkIntegrity.causeTimeout"
+msgstr "Server hat nicht geantwortet (Zeitüberschreitung/Verbindung)"
+
+msgid "plugins.generic.linkIntegrity.causeDenied"
+msgstr "Zugriff verweigert (403)"
+
+msgid "plugins.generic.linkIntegrity.causeServerError"
+msgstr "Interner Serverfehler (5xx)"
+
+msgid "plugins.generic.linkIntegrity.causeOther4xx"
+msgstr "Anderer Client-Fehler (4xx)"
+
+msgid "plugins.generic.linkIntegrity.solutionNotFound"
+msgstr "Die Datei wurde möglicherweise verschoben, umbenannt oder entfernt. Prüfen Sie die Fahne bzw. die Datei des Artikels."
+
+msgid "plugins.generic.linkIntegrity.solutionTimeout"
+msgstr "Möglicherweise eine vorübergehende Störung des Servers oder des Netzes. Prüfen Sie erneut, bevor Sie den Link ändern."
+
+msgid "plugins.generic.linkIntegrity.solutionDenied"
+msgstr "Prüfen Sie die Dateirechte oder Sperrregeln (.htaccess/mod_security) auf dem Zielserver."
+
+msgid "plugins.generic.linkIntegrity.solutionServerError"
+msgstr "Problem auf dem Zielserver. Erwägen Sie, den zuständigen Hosting-Anbieter zu kontaktieren."
+
+msgid "plugins.generic.linkIntegrity.solutionOther4xx"
+msgstr "Ungewöhnlicher Fehlercode — bitte manuell prüfen."
+
+msgid "plugins.generic.linkIntegrity.affectedRecords"
+msgstr "betroffene Einträge"
+
+msgid "plugins.generic.linkIntegrity.noProblemsFound"
+msgstr "🎉 Unter den geprüften Einträgen wurden keine Probleme gefunden."
+
+msgid "plugins.generic.linkIntegrity.noArticles"
+msgstr "In dieser Zeitschrift wurden keine veröffentlichten Artikel gefunden."
+
+msgid "plugins.generic.linkIntegrity.openDashboard"
+msgstr "Prüfer öffnen"
+
+msgid "plugins.generic.linkIntegrity.causeBlocked"
+msgstr "URL durch die Sicherheitsrichtlinie blockiert"
+
+msgid "plugins.generic.linkIntegrity.solutionBlocked"
+msgstr "Die Adresse verweist auf das interne Netz des Servers oder verwendet einen nicht erlaubten Port bzw. ein nicht erlaubtes Protokoll. Prüfen Sie die in der Fahne hinterlegte URL: Sie muss eine öffentliche http- oder https-Adresse sein."
+
+msgid "plugins.generic.linkIntegrity.causeTls"
+msgstr "Ungültiges TLS-Zertifikat"
+
+msgid "plugins.generic.linkIntegrity.solutionTls"
+msgstr "Das Zertifikat des Zielservers ist abgelaufen, selbstsigniert oder passt nicht zur Domain. Auch Lesende sehen beim Öffnen dieses Links eine Sicherheitswarnung des Browsers."
+
+msgid "plugins.generic.linkIntegrity.sessionExpired"
+msgstr "Ihre Sitzung ist abgelaufen. Laden Sie die Seite neu und melden Sie sich erneut an, um die Prüfung fortzusetzen."
+
+msgid "plugins.generic.linkIntegrity.credits"
+msgstr "Entwickelt in Partnerschaft von"
+
+msgid "plugins.generic.linkIntegrity.history"
+msgstr "Versionsverlauf"
+
+msgid "plugins.generic.linkIntegrity.checkUpdate"
+msgstr "Auf neuere Version prüfen"
+
+msgid "plugins.generic.linkIntegrity.updChecking"
+msgstr "Server wird abgefragt..."
+
+msgid "plugins.generic.linkIntegrity.updCurrent"
+msgstr "Sie verwenden die neueste Version."
+
+msgid "plugins.generic.linkIntegrity.updAvailable"
+msgstr "Eine neuere Version ist verfügbar: %s."
+
+msgid "plugins.generic.linkIntegrity.updDownload"
+msgstr "Aktualisierung herunterladen"
+
+msgid "plugins.generic.linkIntegrity.updUnreachable"
+msgstr "Der Versionsserver war nicht erreichbar."
+
+msgid "plugins.generic.linkIntegrity.guideTitle"
+msgstr "So sind die Ergebnisse zu lesen"
+
+msgid "plugins.generic.linkIntegrity.guideIntro"
+msgstr "Jeder Artikel wird auf zwei voneinander unabhängigen Wegen geprüft: die Adresse der Artikelseite (LINK) und der DOI-Eintrag. Die vier Zustände unten gelten für beide."
+
+msgid "plugins.generic.linkIntegrity.guideStatuses"
+msgstr "Zustände"
+
+msgid "plugins.generic.linkIntegrity.guideCauses"
+msgstr "Ursachen für Defekte und was zu tun ist"
+
+msgid "plugins.generic.linkIntegrity.explainOk"
+msgstr "Die Adresse hat normal geantwortet. Nichts zu tun."
+
+msgid "plugins.generic.linkIntegrity.explainBroken"
+msgstr "Die Adresse hat nicht wie erwartet geantwortet. Die Ursache erscheint beim Überfahren der Statuszelle, der Lösungsvorschlag steht im Bericht."
+
+msgid "plugins.generic.linkIntegrity.explainAttention"
+msgstr "Es gibt nichts zu prüfen: Der Artikel hat keinen DOI hinterlegt oder keine veröffentlichte Fahne. Das ist kein defekter Link, sondern ein fehlender Eintrag in OJS."
+
+msgid "plugins.generic.linkIntegrity.explainPending"
+msgstr "In dieser Sitzung noch nicht geprüft. Verwenden Sie Alle prüfen oder die Schaltfläche Prüfen in der Zeile."
+
+msgid "plugins.generic.linkIntegrity.guideHealth"
+msgstr "Der Gesamtzustand ist der Mittelwert aus dem Anteil der LINKS und dem der DOIs, die gut geantwortet haben. Einträge mit ACHTUNG bleiben unberücksichtigt, da sie nicht geprüft wurden."
+
+msgid "plugins.generic.linkIntegrity.healthLinksLabel"
+msgstr "Zustand der LINKS"
+
+msgid "plugins.generic.linkIntegrity.healthDoiLabel"
+msgstr "Zustand der DOIs"
+
+msgid "plugins.generic.linkIntegrity.healthOverallLabel"
+msgstr "Gesamtzustand (gewichtet)"
+
+msgid "plugins.generic.linkIntegrity.coverage"
+msgstr "%1 von %2 Prüfungen durchgeführt"
+
+msgid "plugins.generic.linkIntegrity.coverageNone"
+msgstr "noch nichts geprüft"
+
+msgid "plugins.generic.linkIntegrity.guideWeighted"
+msgstr "Der Gesamtzustand ist ein nach Umfang gewichteter Mittelwert: Er summiert alle Einträge, die gut geantwortet haben, LINKS wie DOIs, und teilt durch die Gesamtzahl der tatsächlich geprüften Einträge. Einträge mit ACHTUNG bleiben außen vor, weil es an ihnen nichts zu prüfen gibt — deshalb zeigt die Abdeckungszeile, wie viele der möglichen Prüfungen wirklich stattgefunden haben. Ein hoher Wert bei geringer Abdeckung bedeutet nicht, dass die Zeitschrift in Ordnung ist: Er bedeutet, dass wenig geprüft wurde."
+
+msgid "plugins.generic.linkIntegrity.themeLabel"
+msgstr "Palette:"
+
+msgid "plugins.generic.linkIntegrity.themeTq"
+msgstr "Tchê"
+
+msgid "plugins.generic.linkIntegrity.themeSotto"
+msgstr "Sotto"
+
+msgid "plugins.generic.linkIntegrity.themeDeBoni"
+msgstr "De Boni"
+
+msgid "plugins.generic.linkIntegrity.themePastel"
+msgstr "Pastell"
+
+msgid "plugins.generic.linkIntegrity.themeMono"
+msgstr "Blau und Schwarz"
+
+msgid "plugins.generic.linkIntegrity.checkUpdateTip"
+msgstr "Fragt den Server des Periódico Tchê Química ab. Übermittelt die Plugin-Version, die OJS-Version sowie Name und Adresse dieser Zeitschrift — keine personenbezogenen Daten."
+
+msgid "plugins.generic.linkIntegrity.causeRedirect"
+msgstr "Weiterleitung ohne endgültiges Ziel"
+
+msgid "plugins.generic.linkIntegrity.solutionRedirect"
+msgstr "Die Adresse leitet im Kreis weiter, oder auf ein Ziel, das sich nicht auflösen lässt, oder sie überschreitet die Grenze der Weiterleitungen. Prüfen Sie die hinterlegte URL und die Rewrite-Regeln des Servers."
+
+msgid "plugins.generic.linkIntegrity.causeInvalidFile"
+msgstr "Die ausgelieferte Datei ist kein gültiges PDF"
+
+msgid "plugins.generic.linkIntegrity.solutionInvalidFile"
+msgstr "Der Server hat 200 geantwortet, der Inhalt beginnt aber nicht mit der PDF-Signatur. Die Datei kann beim Hochladen beschädigt oder durch einen anderen Typ ersetzt worden sein. Laden Sie sie herunter und öffnen Sie sie zur Kontrolle; lässt sie sich nicht öffnen, laden Sie die Fahne erneut hoch."
+
+msgid "plugins.generic.linkIntegrity.causeTruncatedFile"
+msgstr "Abgeschnittenes PDF (ohne Endmarkierung)"
+
+msgid "plugins.generic.linkIntegrity.solutionTruncatedFile"
+msgstr "Die Datei beginnt als PDF, endet aber nicht mit %%EOF — ein Zeichen für einen abgebrochenen Upload oder eine unvollständige Kopie. Der Betrachter meldet „Invalid PDF structure“ und die Seite bleibt leer. Laden Sie die Originaldatei erneut hoch."
+
+msgid "plugins.generic.linkIntegrity.causeErrorPage"
+msgstr "HTML-Seite anstelle der Datei"
+
+msgid "plugins.generic.linkIntegrity.solutionErrorPage"
+msgstr "Die Adresse hat mit Status 200 eine HTML-Seite statt der Datei geliefert. Meist ist das eine Fehlerseite, ein Anmeldehinweis oder eine Sperre des Servers. Öffnen Sie die Adresse in einem privaten Fenster, um zu sehen, was Lesende erhalten."
+
+msgid "plugins.generic.linkIntegrity.causeEmptyFile"
+msgstr "Leere Datei"
+
+msgid "plugins.generic.linkIntegrity.solutionEmptyFile"
+msgstr "Der Server hat 200 mit null Byte geantwortet. Der Eintrag besteht, es gibt aber keinen Inhalt für Lesende. Laden Sie die Fahne erneut hoch."
+
+msgid "plugins.generic.linkIntegrity.statusContent"
+msgstr "DATEI"
+
+msgid "plugins.generic.linkIntegrity.filterContent"
+msgstr "Datei"
+
+msgid "plugins.generic.linkIntegrity.explainContent"
+msgstr "Die Adresse antwortet, aber die gelieferte Datei ist unbrauchbar: beschädigt, abgeschnitten, leer, oder der Server hat stattdessen eine HTML-Seite geliefert. Anders als bei DEFEKT, wo die Adresse überhaupt nicht antwortet. Die genaue Ursache erscheint beim Überfahren und im Bericht."
+
+msgid "plugins.generic.linkIntegrity.scopeBoth"
+msgstr "Beide"
+
+msgid "plugins.generic.linkIntegrity.scopeDoi"
+msgstr "Nur DOI"
+
+msgid "plugins.generic.linkIntegrity.scopeLink"
+msgstr "Nur Link"
+
+msgid "plugins.generic.linkIntegrity.scopeTip"
+msgstr "Legt fest, auf welche Prüfung der Zustandsfilter angewendet wird. Bei „Beide“ erscheint eine Zeile, wenn der DOI oder der Link im gewählten Zustand ist."
+
+msgid "plugins.generic.linkIntegrity.optPublicPage"
+msgstr "Transparenzseite veröffentlichen"
+
+msgid "plugins.generic.linkIntegrity.optPublicFooter"
+msgstr "Dort Danksagung und Verlauf anzeigen"
+
+msgid "plugins.generic.linkIntegrity.optOpenPublic"
+msgstr "Öffentliche Seite öffnen"
+
+msgid "plugins.generic.linkIntegrity.optSaving"
+msgstr "Wird gespeichert..."
+
+msgid "plugins.generic.linkIntegrity.optSaved"
+msgstr "Gespeichert."
+
+msgid "plugins.generic.linkIntegrity.optFailed"
+msgstr "Speichern nicht möglich."
+
+msgid "plugins.generic.linkIntegrity.publicTitle"
+msgstr "Integrität von Links und DOIs"
+
+msgid "plugins.generic.linkIntegrity.publicIntro"
+msgstr "Diese Zeitschrift prüft regelmäßig die Adressen ihrer Artikel und deren DOI-Einträge."
+
+msgid "plugins.generic.linkIntegrity.publicLastCheck"
+msgstr "Zuletzt geprüft am"
+
+msgid "plugins.generic.linkIntegrity.publicArticles"
+msgstr "veröffentlichte Artikel"
+
+msgid "plugins.generic.linkIntegrity.publicChecked"
+msgstr "geprüft"
+
+msgid "plugins.generic.linkIntegrity.publicNote"
+msgstr "Die Prozentwerte berücksichtigen nur die tatsächlich geprüften Einträge. Einträge mit ACHTUNG sind solche ohne hinterlegten DOI oder ohne veröffentlichte Fahne; sie bleiben außerhalb der Berechnung."
+
+msgid "plugins.generic.linkIntegrity.publicNoData"
+msgstr "Es wurde noch keine Prüfung abgeschlossen."
