@@ -227,7 +227,7 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
             'licCsrf' => (string) LinkIntegrityCompat::csrfToken($request),
             'pageTitle' => __('plugins.generic.linkIntegrity.displayName'),
             'licVersion' => $this->pluginVersion(),
-            'licHistoryHtml' => LinkIntegrityMarkdown::render($this->changelog()),
+            'licHistoryHtml' => LinkIntegrityMarkdown::render($this->changelog($locale)),
             's' => LinkIntegrityLocale::strings($this->localeDir(), $locale),
             'licLocale' => $locale,
             'licLocales' => $this->localeOptions($request, $locale),
@@ -288,22 +288,45 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
     }
 
     /**
-     * Conteúdo do CHANGELOG.md, exibido no rodapé da interface.
+     * Histórico de versões no idioma da interface, exibido no rodapé.
      *
      * Ler o arquivo em vez de duplicar o histórico em constantes mantém
      * uma única fonte da verdade: o que está no repositório é o que o
      * gerente da revista vê na tela.
      *
+     * CHANGELOG.md é o original, em português. Os demais idiomas procuram
+     * CHANGELOG.<locale>.md e CHANGELOG.<idioma>.md (ex.: es_ES, depois es)
+     * e, sem tradução própria, ficam com o inglês, CHANGELOG.en.md.
+     *
+     * @param string|null $locale
      * @return string
      */
-    private function changelog()
+    private function changelog($locale = null)
     {
-        $file = dirname(__DIR__) . '/CHANGELOG.md';
-        if (!is_readable($file)) {
-            return '';
+        $dir = dirname(__DIR__);
+        $candidates = array();
+
+        $locale = (string) $locale;
+        // O locale ja foi validado em resolveLocale(); a regex garante que
+        // nada alem de letras, digitos e "_" chegue ao nome do arquivo.
+        if (preg_match('/^([A-Za-z]{2,3})(?:[_-][A-Za-z0-9]+)?$/', $locale, $m)) {
+            $lang = strtolower($m[1]);
+            if ($lang !== 'pt') {
+                $candidates[] = 'CHANGELOG.' . $locale . '.md';
+                $candidates[] = 'CHANGELOG.' . $lang . '.md';
+                $candidates[] = 'CHANGELOG.en.md';
+            }
         }
-        $txt = file_get_contents($file);
-        return $txt === false ? '' : $txt;
+        $candidates[] = 'CHANGELOG.md';
+
+        foreach (array_unique($candidates) as $name) {
+            $file = $dir . '/' . $name;
+            if (is_readable($file)) {
+                $txt = file_get_contents($file);
+                return $txt === false ? '' : $txt;
+            }
+        }
+        return '';
     }
 
     /**
@@ -702,7 +725,7 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
             ) : null,
             'licShowFooter' => $showFooter,
             'licVersion' => $this->pluginVersion(),
-            'licHistoryHtml' => $showFooter ? LinkIntegrityMarkdown::render($this->changelog()) : '',
+            'licHistoryHtml' => $showFooter ? LinkIntegrityMarkdown::render($this->changelog($locale)) : '',
         ));
 
         $templateMgr->display($this->plugin->getTemplateResource('status.tpl'));

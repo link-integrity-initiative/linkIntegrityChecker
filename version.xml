@@ -21,7 +21,7 @@
 <version>
     <application>linkIntegrityChecker</application>
     <type>plugins.generic</type>
-    <release>0.5.4.1</release>
+    <release>0.5.4.2</release>
     <date>2026-11-27</date>
     <lazy-load>1</lazy-load>
     <sitewide>0</sitewide>

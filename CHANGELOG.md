@@ -28,6 +28,19 @@ Este documento registra a evolução do plugin resultante dessa parceria.
 
 ---
 
+## [0.5.4.2] — 2026-11-27
+
+### Adicionado
+- **Histórico de versões em inglês.** O histórico exibido no rodapé do
+  painel e na página pública era sempre este `CHANGELOG.md`, em português,
+  qualquer que fosse o idioma da interface. Agora ele acompanha o idioma:
+  português mostra este arquivo, e os demais idiomas mostram a tradução em
+  inglês, `CHANGELOG.en.md`. Uma tradução para outro idioma pode ser
+  acrescentada como `CHANGELOG.<idioma>.md` (ex.: `CHANGELOG.es.md`) e
+  passa a ser usada sozinha.
+
+---
+
 ## [0.5.4.1] — 2026-11-27
 
 ### Corrigido
