@@ -45,7 +45,7 @@
 class LinkIntegrityHttpClient
 {
     /** @var int Máximo de saltos de redirecionamento seguidos manualmente */
-    const MAX_REDIRECTS = 10;
+    const MAX_REDIRECTS = 5;
 
     /** @var int Timeout total da requisição, em segundos */
     const TIMEOUT = 12;
@@ -54,7 +54,7 @@ class LinkIntegrityHttpClient
     const CONNECT_TIMEOUT = 8;
 
     /** @var string Identificacao enviada aos servidores consultados */
-    const USER_AGENT = 'Mozilla/5.0 (compatible; OJS-LinkIntegrityChecker/0.5; +https://websotto.com.br/)';
+    const USER_AGENT = 'Mozilla/5.0 (compatible; OJS-LinkIntegrityChecker/0.5.4; +https://websotto.com.br/)';
 
     /** @var int Limite de corpo lido; só precisamos do status e do Location */
     const MAX_BODY_BYTES = 32768;
@@ -67,6 +67,15 @@ class LinkIntegrityHttpClient
 
     /** @var int[] Portas permitidas */
     private $allowedPorts = array(80, 443);
+
+    /**
+     * Instante (microtime) a partir do qual nenhuma nova requisição sai.
+     * Uma verificação inteira (DOI, link, fim do PDF, repetições e
+     * redirecionamentos) precisa caber no max_execution_time do PHP.
+     *
+     * @var float
+     */
+    private $deadline;
 
     /** @var array<string,string> Cabeçalhos de resposta do salto atual */
     private $responseHeaders = array();
@@ -93,8 +102,10 @@ class LinkIntegrityHttpClient
     public function __construct(array $allowedHosts = array(), array $allowedPorts = array())
     {
         foreach ($allowedHosts as $host) {
-            $host = strtolower(trim((string) $host));
-            if ($host !== '') {
+            $host = strtolower(trim((string) $host, " \t\n\r\0\x0B[]"));
+            // IP literal nunca fica isento: a exceção existe para o nome da
+            // revista que resolve para endereço privado, não para endereços.
+            if ($host !== '' && filter_var($host, FILTER_VALIDATE_IP) === false) {
                 $this->allowedHosts[$host] = true;
             }
         }
@@ -105,6 +116,30 @@ class LinkIntegrityHttpClient
             }
         }
         $this->allowedPorts = array_values(array_unique($this->allowedPorts));
+
+        $limit = (int) ini_get('max_execution_time');
+        $budget = $limit > 0 ? max(8, $limit - 5) : 60;
+        $this->deadline = microtime(true) + $budget;
+    }
+
+    /**
+     * Segundos que ainda restam para esta verificação (0 = esgotado).
+     *
+     * @return int
+     */
+    private function remainingSeconds()
+    {
+        return max(0, (int) floor($this->deadline - microtime(true)));
+    }
+
+    /**
+     * Tempo total da verificação esgotado? Usado para não repetir à toa.
+     *
+     * @return bool
+     */
+    public function outOfTime()
+    {
+        return $this->remainingSeconds() < 2;
     }
 
     /**
@@ -186,6 +221,9 @@ class LinkIntegrityHttpClient
         // este metodo seguia redirects sem revalidar, o que reabria o SSRF.
         $current = (string) $url;
         for ($hop = 0; $hop <= self::MAX_REDIRECTS; $hop++) {
+            if ($this->outOfTime()) {
+                return '';
+            }
             $check = $this->validateUrl($current);
             if (!$check['ok']) {
                 return '';
@@ -206,8 +244,8 @@ class LinkIntegrityHttpClient
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_HEADER => false,
                 CURLOPT_FOLLOWLOCATION => false,
-                CURLOPT_TIMEOUT => self::TIMEOUT,
-                CURLOPT_CONNECTTIMEOUT => self::CONNECT_TIMEOUT,
+                CURLOPT_TIMEOUT => min(self::TIMEOUT, $this->remainingSeconds()),
+                CURLOPT_CONNECTTIMEOUT => min(self::CONNECT_TIMEOUT, $this->remainingSeconds()),
                 CURLOPT_SSL_VERIFYPEER => true,
                 CURLOPT_SSL_VERIFYHOST => 2,
                 CURLOPT_RANGE => '-' . (int) $lastBytes,
@@ -628,6 +666,11 @@ class LinkIntegrityHttpClient
             return array('code' => 0, 'err' => 'curl_indisponivel', 'location' => null);
         }
 
+        // Sem tempo para mais um salto: devolve como timeout (code 0, err).
+        if ($this->outOfTime()) {
+            return array('code' => 0, 'err' => 'tempo_esgotado', 'location' => null);
+        }
+
         $this->responseHeaders = array();
         $this->headerBytes = 0;
         $this->bodyBytes = 0;
@@ -643,8 +686,8 @@ class LinkIntegrityHttpClient
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false,
             CURLOPT_FOLLOWLOCATION => false,
-            CURLOPT_TIMEOUT => self::TIMEOUT,
-            CURLOPT_CONNECTTIMEOUT => self::CONNECT_TIMEOUT,
+            CURLOPT_TIMEOUT => min(self::TIMEOUT, $this->remainingSeconds()),
+            CURLOPT_CONNECTTIMEOUT => min(self::CONNECT_TIMEOUT, $this->remainingSeconds()),
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_SSL_VERIFYHOST => 2,
             CURLOPT_USERAGENT => self::USER_AGENT,

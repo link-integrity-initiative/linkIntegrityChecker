@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Link Integrity Checker 0.5.3\n"
+"Project-Id-Version: Link Integrity Checker 0.5.4\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -250,7 +250,7 @@ msgid "plugins.generic.linkIntegrity.themeMono"
 msgstr "Blue and black"
 
 msgid "plugins.generic.linkIntegrity.checkUpdateTip"
-msgstr "Queries the Periódico Tchê Química server. Sends the plugin version, the OJS version, and this journal's name and address — no personal data."
+msgstr "Checks the latest release on GitHub (link-integrity-initiative/linkIntegrityChecker). Nothing about this journal is sent."
 
 msgid "plugins.generic.linkIntegrity.causeRedirect"
 msgstr "Redirect with no final destination"

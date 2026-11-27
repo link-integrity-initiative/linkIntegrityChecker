@@ -1,12 +1,12 @@
 # Link Integrity Checker — Plugin para OJS
 
 [![OJS](https://img.shields.io/badge/OJS-3.3%20%7C%203.4%20%7C%203.5-brightgreen)](https://pkp.sfu.ca/ojs/)
-[![Versão](https://img.shields.io/badge/vers%C3%A3o-0.5.3.0-blue)](version.xml)
+[![Versão](https://img.shields.io/badge/vers%C3%A3o-0.5.4.0-blue)](version.xml)
 [![Licença](https://img.shields.io/badge/licen%C3%A7a-GPL--3.0-lightgrey)](LICENSE)
 
 [English](README.md) · **Português**
 
-**⬇️ Pacote de instalação:** [linkIntegrityChecker-0.5.3.0.tar.gz](https://github.com/link-integrity-initiative/linkIntegrityChecker/releases/download/0.5.3.0/linkIntegrityChecker-0.5.3.0.tar.gz) (OJS 3.3, 3.4 e 3.5) — ou veja todas as [Releases](../../releases).
+**⬇️ Pacote de instalação:** [linkIntegrityChecker-0.5.4.0.tar.gz](https://github.com/link-integrity-initiative/linkIntegrityChecker/releases/download/0.5.4.0/linkIntegrityChecker-0.5.4.0.tar.gz) (OJS 3.3, 3.4 e 3.5) — ou veja todas as [Releases](../../releases).
 
 > **Mantido pela [Link Integrity Initiative](https://github.com/link-integrity-initiative).**
 
@@ -14,13 +14,13 @@
 
 | Versão do OJS | Branch | Versão do plugin |
 |---|---|---|
-| 3.3, 3.4, 3.5 | `stable-3_5_0` *(padrão)* | 0.5.3.0 |
+| 3.3, 3.4, 3.5 | `stable-3_5_0` *(padrão)* | 0.5.4.0 |
 
 Um único pacote atende as três linhas do OJS (uma camada de
 compatibilidade escolhe a API certa em tempo de execução). Não renomeie a
 pasta: ela precisa se chamar `linkIntegrityChecker`.
 
-**Versão:** 0.5.3 · **Compatibilidade:** OJS 3.3, 3.4 e 3.5 (LTS) · **Licença:** GPL v3+
+**Versão:** 0.5.4 · **Compatibilidade:** OJS 3.3, 3.4 e 3.5 (LTS) · **Licença:** GPL v3+
 
 Plugin genérico para o Open Journal Systems (OJS) que audita, com um
 clique, a integridade dos **links** e **DOIs** dos artigos publicados na
@@ -166,16 +166,16 @@ Nenhuma lista de artigos ou endereços é gravada.
 
 O botão **"Verificar se há versão mais nova"**, no rodapé do painel, só faz contato
 externo quando alguém clica nele. Nessa hora, o **servidor da revista**
-consulta `https://www.tchequimica.com/linkIntegrityCheckerVersion.php`
-enviando:
+pergunta à API pública do GitHub qual é a última release deste repositório
+(`https://api.github.com/repos/link-integrity-initiative/linkIntegrityChecker/releases/latest`)
+e compara com a versão instalada. Se houver uma mais nova, o botão mostra o
+link do pacote para instalar.
 
-- a versão do plugin e a do OJS;
-- o **nome da revista** e o **endereço do site**, usados apenas para medir
-  quantas revistas usam o plugin.
-
-Nenhum dado de pessoas é enviado. Quem faz a requisição é o servidor, então
-o IP registrado é o da hospedagem, e não o de quem clicou. Se não quiser
-esse contato, basta não usar o botão.
+É um GET anônimo: **nada sobre a revista ou seus usuários é enviado** (até a
+0.5.3, o nome da revista e o endereço do site iam para o servidor do
+Periódico Tchê Química). Quem faz a requisição é o servidor, então o IP que
+o GitHub vê é o da hospedagem, e não o de quem clicou. Se não quiser esse
+contato, basta não usar o botão.
 
 ---
 

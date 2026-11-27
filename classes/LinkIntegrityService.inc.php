@@ -35,6 +35,14 @@ class LinkIntegrityService
      * @param string[] $selfHosts Hosts da própria instalação
      * @param int[] $selfPorts Portas adicionais da própria instalação
      */
+    /**
+     * Para cada URL de composição local: se ela deve entregar um PDF.
+     * Preenchido por extractLinks() a partir do rótulo da composição.
+     *
+     * @var array<string, bool>
+     */
+    private $expectsPdfByUrl = array();
+
     public function __construct(array $selfHosts = array(), array $selfPorts = array())
     {
         $this->client = new LinkIntegrityHttpClient($selfHosts, $selfPorts);
@@ -141,7 +149,11 @@ class LinkIntegrityService
             );
         }
 
-        if (!$this->isSuccessCode($result['code'])) {
+        // Repete só falha que pode ser passageira (sem resposta, 429 ou
+        // 5xx) e se ainda houver tempo. 404/403 não mudam em 400 ms.
+        $code = (int) $result['code'];
+        $transient = $code === 0 || $code === 429 || $code >= 500;
+        if (!$this->isSuccessCode($code) && $transient && !$this->client->outOfTime()) {
             usleep(400000);
             $result = $this->client->fetch($url);
             if (!empty($result['blocked'])) {
@@ -199,9 +211,15 @@ class LinkIntegrityService
         $isHtml = stripos($type, 'text/html') !== false
             || preg_match('/^\s*(<!doctype html|<html)/i', $head);
         $looksPdf = strncmp($head, '%PDF-', 5) === 0;
+        // Composição local: o rótulo diz se é PDF. Até a 0.5.3 bastava a URL
+        // conter /download/, e composições HTML, XML ou EPUB viravam falsos
+        // "página de erro" / "arquivo inválido".
+        $localExpectation = isset($this->expectsPdfByUrl[$url]) ? $this->expectsPdfByUrl[$url] : null;
         $expectsPdf = stripos($type, 'pdf') !== false
             || preg_match('/\.pdf(\?|$)/i', $url)
-            || strpos($url, '/download/') !== false;
+            || ($localExpectation === null
+                ? strpos($url, '/download/') !== false
+                : $localExpectation);
 
         // HTML onde deveria vir um arquivo: quase sempre pagina de erro,
         // aviso de login ou tela de bloqueio servida com status 200.
@@ -474,12 +492,19 @@ class LinkIntegrityService
     private function extractLinks($submission, $contextId, $publication)
     {
         $links = array();
+        $pdfLinks = array();
         $galleys = $publication->getData('galleys');
 
         if (!empty($galleys)) {
             foreach ($galleys as $galley) {
+                $label = method_exists($galley, 'getLabel') ? (string) $galley->getLabel() : (string) $galley->getData('label');
+                $isPdf = (bool) preg_match('/pdf/i', $label);
                 if (method_exists($galley, 'getRemoteURL') && $galley->getRemoteURL()) {
-                    $links[] = $galley->getRemoteURL();
+                    if ($isPdf) {
+                        $pdfLinks[] = $galley->getRemoteURL();
+                    } else {
+                        $links[] = $galley->getRemoteURL();
+                    }
                     continue;
                 }
                 // DOWNLOAD, e nao VIEW. A pagina do visualizador responde
@@ -492,10 +517,18 @@ class LinkIntegrityService
                 // PDFs perdidos.
                 $url = $this->buildArticleUrl($submission, $contextId, $galley->getId(), 'download');
                 if ($url) {
-                    $links[] = $url;
+                    $this->expectsPdfByUrl[$url] = $isPdf;
+                    if ($isPdf) {
+                        $pdfLinks[] = $url;
+                    } else {
+                        $links[] = $url;
+                    }
                 }
             }
         }
+
+        // A primeira composição é a testada: o PDF, quando houver, vem antes.
+        $links = array_merge($pdfLinks, $links);
 
         if (empty($links)) {
             // Sem composicao publicada nao ha arquivo para baixar; resta

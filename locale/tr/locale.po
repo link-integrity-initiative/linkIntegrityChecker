@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Link Integrity Checker 0.5.3\n"
+"Project-Id-Version: Link Integrity Checker 0.5.4\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -250,7 +250,7 @@ msgid "plugins.generic.linkIntegrity.themeMono"
 msgstr "Mavi ve siyah"
 
 msgid "plugins.generic.linkIntegrity.checkUpdateTip"
-msgstr "Periódico Tchê Química sunucusuna başvurur. Eklenti sürümünü, OJS sürümünü, bu derginin adını ve adresini gönderir — kişisel veri göndermez."
+msgstr "GitHub'daki en son sürümü kontrol eder (link-integrity-initiative/linkIntegrityChecker). Bu dergiyle ilgili hiçbir bilgi gönderilmez."
 
 msgid "plugins.generic.linkIntegrity.causeRedirect"
 msgstr "Son hedefi olmayan yönlendirme"

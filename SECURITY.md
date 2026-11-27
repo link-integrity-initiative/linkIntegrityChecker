@@ -134,9 +134,15 @@ cadastrado por quem cuida da produção). Por isso:
 
 ## Exceção deliberada: o host da própria revista
 
-O host da própria instalação (derivado de `Request::getBaseUrl()` e
-`getIndexUrl()`) entra numa allowlist e **não** passa pela checagem de faixa
-de IP.
+O host da própria instalação entra numa allowlist e **não** passa pela
+checagem de faixa de IP. Ele vem **só do `config.inc.php`** (`base_url` e
+as substituições `base_url[caminho]`), nunca dos cabeçalhos da requisição.
+Endereço IP literal nunca fica isento, mesmo que esteja no `base_url`.
+
+Até a 0.5.3 o host vinha de `Request::getBaseUrl()`, que o OJS monta a
+partir de `Host` / `X-Forwarded-Host`. Um gerente que forjasse o cabeçalho
+escolhia o host isento (ex.: `169.254.169.254` ou um IP da rede interna) e
+a porta liberada; corrigido na 0.5.4.
 
 **Por quê:** é comum o OJS rodar atrás de proxy reverso, em contêiner ou com
 split-horizon DNS, onde o próprio domínio da revista resolve para um
@@ -167,9 +173,9 @@ para todos os destinos.
 - **Não envia dados sem ação de alguém.** As requisições de saída são para
   as URLs auditadas e para `https://doi.org/`. A única exceção é o botão
   "Verificar se há versão mais nova": ao ser clicado, o servidor da revista
-  envia ao servidor de versões do Periódico Tchê Química a versão do
-  plugin, a do OJS, o nome da revista e o endereço do site. Nenhum dado de
-  pessoas é enviado (ver README).
+  faz um GET anônimo à API pública do GitHub
+  (`api.github.com/repos/link-integrity-initiative/linkIntegrityChecker/releases/latest`).
+  Nada sobre a revista ou seus usuários é enviado (ver README).
 
 ---
 

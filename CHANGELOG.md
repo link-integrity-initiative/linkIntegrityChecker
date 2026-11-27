@@ -28,6 +28,47 @@ Este documento registra a evolução do plugin resultante dessa parceria.
 
 ---
 
+## [0.5.4] — 2026-11-27
+
+### Segurança
+- **SSRF pelo cabeçalho `X-Forwarded-Host`.** O host isento da checagem de
+  faixa de IP (o da própria revista) vinha de `Request::getBaseUrl()`, que
+  o OJS monta a partir dos cabeçalhos da requisição. Um gerente que
+  forjasse o cabeçalho escolhia o host isento e a porta liberada e podia
+  sondar a rede interna (`169.254.169.254`, `10.x`). Agora os hosts e
+  portas próprios vêm só do `base_url` do `config.inc.php`, e IP literal
+  nunca fica isento.
+- A verificação de atualização só segue redirecionamentos para `https`.
+
+### Alterado
+- **Verificação de versão pelo GitHub.** O botão do rodapé passa a
+  consultar a última release em
+  `github.com/link-integrity-initiative/linkIntegrityChecker` pela API
+  pública do GitHub, e o link "Baixar" leva ao pacote `.tar.gz` da release.
+  Não envia mais o nome da revista, o endereço do site nem as versões ao
+  servidor do Periódico Tchê Química: é um GET anônimo.
+- Versões comparadas em quatro partes (`0.5.4` = `0.5.4.0`).
+
+### Corrigido — funcionamento
+- **Card "Saúde geral" sempre "Crítico" com "NaN%".** O total somado para
+  o card não incluía as falhas de conteúdo, e o cálculo dava `NaN`.
+- **Verificação que estourava o `max_execution_time`.** Uma única
+  verificação podia somar vários minutos (repetição × redirecionamentos ×
+  12 s, mais a leitura do fim do PDF). Agora cada verificação tem um tempo
+  total (o `max_execution_time` menos 5 s, ou 60 s sem limite), o que
+  passar disso é relatado como timeout, os redirecionamentos caem de 10
+  para 5 e só falhas passageiras (sem resposta, 429, 5xx) são repetidas.
+- **Falso "quebrado" em composições que não são PDF.** Bastava a URL
+  conter `/download/` para o plugin esperar um PDF, e composições HTML,
+  XML ou EPUB apareciam como "página de erro" ou "arquivo inválido". Agora
+  o rótulo da composição decide, e a composição PDF, quando houver, é a
+  testada primeiro.
+- **JS e CSS antigos depois de atualizar.** O OJS marcava os arquivos com
+  a versão do próprio OJS (`?v=3.5.0.5`), e o navegador continuava usando
+  o JavaScript da versão anterior do plugin. Agora a marca é a versão do
+  plugin.
+- User-Agent com a versão completa (`0.5.4`).
+
 ## [0.5.3] — 2026-11-18
 
 ### Corrigido — funcionamento

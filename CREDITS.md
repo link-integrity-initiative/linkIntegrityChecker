@@ -33,7 +33,7 @@ periódicos indexados (https://credit.niso.org/).
 ## Como citar este plugin
 
 > De Boni, L. A. B.; Sotto, B. (2026). *Link Integrity Checker: plugin de
-> auditoria de links e DOIs para o Open Journal Systems* (versão 0.5.3)
+> auditoria de links e DOIs para o Open Journal Systems* (versão 0.5.4)
 > [Software]. Periódico Tchê Química / WebSotto.
 
 ## Traduções

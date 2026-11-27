@@ -183,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setHealthCard('licGenHealth', 'licGenHealthSub', {
             ok: sl.ok + sd.ok,
             broken: sl.broken + sd.broken,
+            conteudo: (sl.conteudo || 0) + (sd.conteudo || 0),
             atencao: sl.atencao + sd.atencao,
             pending: sl.pending + sd.pending
         }, total * 2);

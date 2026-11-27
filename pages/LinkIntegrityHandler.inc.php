@@ -38,7 +38,11 @@ if (!class_exists('LinkIntegrityHandlerBase', false)) {
 class LinkIntegrityHandler extends LinkIntegrityHandlerBase
 {
     /** @var string Serviço de versões mantido pelo Periódico Tchê Química */
-    const UPDATE_ENDPOINT = 'https://www.tchequimica.com/linkIntegrityCheckerVersion.php';
+    /** Última release publicada no GitHub (API pública, sem token). */
+    const UPDATE_ENDPOINT = 'https://api.github.com/repos/link-integrity-initiative/linkIntegrityChecker/releases/latest';
+
+    /** Página das releases, para quando a release não traz o pacote. */
+    const RELEASES_PAGE = 'https://github.com/link-integrity-initiative/linkIntegrityChecker/releases';
 
     /** Bandeiras em SVG embutido; ver localeOptions() para o porquê */
     const FLAG_BR = '<svg viewBox="0 0 28 20" width="20" height="14" aria-hidden="true">'
@@ -199,14 +203,18 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
         // ignora <style> e <script> dentro do template do componente.
         if ($this->plugin && method_exists($templateMgr, 'addStyleSheet')) {
             $base = $request->getBaseUrl() . '/' . $this->plugin->getPluginPath();
+            // Versão do plugin na URL: sem ela o OJS acrescenta a versão do
+            // próprio OJS, e o navegador seguia com o JS antigo do cache
+            // depois de atualizar o plugin.
+            $bust = '?v=' . rawurlencode($this->pluginVersion());
             $templateMgr->addStyleSheet(
                 'linkIntegrity',
-                $base . '/styles/linkIntegrity.css',
+                $base . '/styles/linkIntegrity.css' . $bust,
                 array('contexts' => 'backend')
             );
             $templateMgr->addJavaScript(
                 'linkIntegrity',
-                $base . '/js/linkIntegrity.js',
+                $base . '/js/linkIntegrity.js' . $bust,
                 array('contexts' => 'backend')
             );
         }
@@ -409,12 +417,12 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
     }
 
     /**
-     * Consulta o servidor de versões do Periódico Tchê Química.
+     * Consulta a última release do plugin no GitHub.
      *
-     * A consulta é feita AQUI, no servidor, e não no navegador: uma
-     * chamada direta do JavaScript para outro domínio exigiria cabeçalhos
-     * CORS no site de destino e falharia silenciosamente sem eles. A URL
-     * consultada é constante, não vem do usuário.
+     * A consulta é feita AQUI, no servidor, e não no navegador, e a URL é
+     * constante, não vem do usuário. Desde a 0.5.4 nada sobre a revista é
+     * enviado: é um GET anônimo à API pública do GitHub. O IP registrado
+     * do outro lado é o do servidor da revista.
      *
      * @param array $args
      * @param object $request
@@ -426,66 +434,65 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
         }
 
         $current = $this->pluginVersion();
-        $context = $request->getContext();
 
-        // O que segue para o servidor de versões, e por quê: a versão, para
-        // saber se há atualização; o nome e o endereço da revista, para
-        // medir se o plugin tem uso real. Nada disso identifica pessoas —
-        // quem faz a requisição é o servidor da revista, não o navegador de
-        // quem clicou, então o IP registrado do outro lado é o da
-        // hospedagem. E nada é enviado sem que alguém clique no botão.
-        $params = array(
-            'v' => $current,
-            'ojs' => $this->ojsVersion(),
-            'journal' => $context ? $context->getLocalizedName() : '',
-            'site' => $request->getBaseUrl(),
-        );
-        $url = self::UPDATE_ENDPOINT . '?' . http_build_query($params);
-
-        $body = $this->httpGet($url);
+        $body = $this->httpGet(self::UPDATE_ENDPOINT);
         if ($body === null) {
             echo json_encode(array('error' => 'unreachable', 'current' => $current));
             return;
         }
 
         $data = json_decode($body, true);
-        if (!is_array($data) || empty($data['version'])) {
+        $tag = is_array($data) && isset($data['tag_name']) ? (string) $data['tag_name'] : '';
+        $latest = $this->normalizeVersion($tag);
+        if ($latest === '') {
             echo json_encode(array('error' => 'bad_response', 'current' => $current));
             return;
         }
 
-        $latest = (string) $data['version'];
+        // Pacote instalável anexado à release; sem ele, a página da release.
+        $download = '';
+        if (!empty($data['assets']) && is_array($data['assets'])) {
+            foreach ($data['assets'] as $asset) {
+                $name = isset($asset['name']) ? (string) $asset['name'] : '';
+                $link = isset($asset['browser_download_url']) ? (string) $asset['browser_download_url'] : '';
+                if (preg_match('/\.tar\.gz$/i', $name) && preg_match('#^https://github\.com/#i', $link)) {
+                    $download = $link;
+                    break;
+                }
+            }
+        }
+        if ($download === '') {
+            $page = isset($data['html_url']) ? (string) $data['html_url'] : '';
+            $download = preg_match('#^https://github\.com/#i', $page) ? $page : self::RELEASES_PAGE;
+        }
+
         echo json_encode(array(
             'current' => $current,
             'latest' => $latest,
-            'outdated' => version_compare($latest, $current, '>'),
-            // So https: o endereco vira link na tela do gerente.
-            'download' => isset($data['download']) && preg_match('#^https://#i', (string) $data['download'])
-                ? (string) $data['download'] : '',
-            'notes' => isset($data['notes']) ? (string) $data['notes'] : '',
+            'outdated' => $current !== ''
+                && version_compare($latest, $this->normalizeVersion($current), '>'),
+            'download' => $download,
         ));
     }
 
     /**
-     * Versão do OJS instalada.
+     * Versão em quatro partes (0.5.4 → 0.5.4.0; v0.5.4.0 → 0.5.4.0), para
+     * comparar tag e version.xml sem "0.5.4.0" > "0.5.4" dar verdadeiro.
      *
-     * @return string
+     * @param string $version
+     * @return string '' se não for uma versão numérica
      */
-    private function ojsVersion()
+    private function normalizeVersion($version)
     {
-        try {
-            if (class_exists('\\PKP\\db\\DAORegistry')) {
-                $dao = \PKP\db\DAORegistry::getDAO('VersionDAO');
-            } elseif (class_exists('DAORegistry')) {
-                $dao = DAORegistry::getDAO('VersionDAO');
-            } else {
-                return '';
-            }
-            $version = $dao->getCurrentVersion();
-            return $version ? (string) $version->getVersionString(false) : '';
-        } catch (\Throwable $e) {
+        $version = ltrim(trim((string) $version), 'vV');
+        if (!preg_match('/^\d+(\.\d+){0,3}$/', $version)) {
             return '';
         }
+        $parts = array_map('intval', explode('.', $version));
+        while (count($parts) < 4) {
+            $parts[] = 0;
+        }
+        return implode('.', $parts);
     }
 
     /**
@@ -504,11 +511,20 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_MAXREDIRS => 3,
+            // Só https, também nos redirecionamentos: sem rebaixar para
+            // http nem seguir para outro protocolo.
+            CURLOPT_PROTOCOLS => CURLPROTO_HTTPS,
+            CURLOPT_REDIR_PROTOCOLS => CURLPROTO_HTTPS,
             CURLOPT_TIMEOUT => 12,
             CURLOPT_CONNECTTIMEOUT => 6,
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_SSL_VERIFYHOST => 2,
+            // A API do GitHub recusa requisições sem User-Agent.
             CURLOPT_USERAGENT => 'LinkIntegrityChecker/' . $this->pluginVersion(),
+            CURLOPT_HTTPHEADER => array(
+                'Accept: application/vnd.github+json',
+                'X-GitHub-Api-Version: 2022-11-28',
+            ),
         ));
         $body = curl_exec($ch);
         $code = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -665,7 +681,8 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
         if (method_exists($templateMgr, 'addStyleSheet')) {
             $templateMgr->addStyleSheet(
                 'linkIntegrity',
-                $request->getBaseUrl() . '/' . $this->plugin->getPluginPath() . '/styles/linkIntegrity.css',
+                $request->getBaseUrl() . '/' . $this->plugin->getPluginPath() . '/styles/linkIntegrity.css'
+                    . '?v=' . rawurlencode($this->pluginVersion()),
                 array('contexts' => 'frontend')
             );
         }
@@ -800,16 +817,18 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
      * Hosts da própria instalação, isentos da checagem de faixa de IP.
      * Ver a nota sobre proxy reverso em SECURITY.md.
      *
+     * Vêm só do config.inc.php (base_url e base_url[...]). Até a 0.5.3
+     * vinham de Request::getBaseUrl(), que o OJS monta a partir dos
+     * cabeçalhos Host / X-Forwarded-Host: quem forjasse o cabeçalho
+     * escolhia o host isento (ex.: 169.254.169.254) e a porta liberada.
+     *
      * @param object $request
      * @return string[]
      */
     private function selfHosts($request)
     {
         $hosts = array();
-        foreach (array($request->getBaseUrl(), $request->getIndexUrl()) as $url) {
-            if (!$url) {
-                continue;
-            }
+        foreach ($this->configBaseUrls() as $url) {
             $host = parse_url($url, PHP_URL_HOST);
             if ($host) {
                 $hosts[] = strtolower($host);
@@ -827,16 +846,52 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
     private function selfPorts($request)
     {
         $ports = array();
-        foreach (array($request->getBaseUrl(), $request->getIndexUrl()) as $url) {
-            if (!$url) {
-                continue;
-            }
+        foreach ($this->configBaseUrls() as $url) {
             $port = parse_url($url, PHP_URL_PORT);
             if ($port) {
                 $ports[] = (int) $port;
             }
         }
         return array_values(array_unique($ports));
+    }
+
+    /**
+     * Endereços-base declarados no config.inc.php: base_url e as
+     * substituições base_url[caminho] por revista.
+     *
+     * @return string[]
+     */
+    private function configBaseUrls()
+    {
+        $class = class_exists('PKP\\config\\Config') ? 'PKP\\config\\Config'
+            : (class_exists('Config') ? 'Config' : null);
+        if ($class === null) {
+            return array();
+        }
+
+        $urls = array();
+        $base = $class::getVar('general', 'base_url');
+        if (is_string($base) && $base !== '') {
+            $urls[] = $base;
+        }
+
+        $data = method_exists($class, 'getData') ? $class::getData() : array();
+        $general = isset($data['general']) && is_array($data['general']) ? $data['general'] : array();
+        foreach ($general as $key => $value) {
+            // O parser do PKP guarda "base_url[caminho]" como chave literal;
+            // por garantia aceita também a forma de array aninhado.
+            if (is_string($key) && strpos($key, 'base_url[') === 0 && is_string($value)) {
+                $urls[] = $value;
+            } elseif ($key === 'base_url' && is_array($value)) {
+                foreach ($value as $v) {
+                    if (is_string($v)) {
+                        $urls[] = $v;
+                    }
+                }
+            }
+        }
+
+        return array_values(array_unique(array_filter($urls)));
     }
 
     /**
