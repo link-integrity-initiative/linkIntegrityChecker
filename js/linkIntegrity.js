@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var el = document.getElementById(id);
         if (!el) return;
         var s = calcStats(field);
-        var total = s.ok + s.broken + s.atencao + s.pending;
+        var total = s.ok + s.broken + s.conteudo + s.atencao + s.pending;
         var R = 52, C = 2 * Math.PI * R, off = 0, arcs = '';
         ['ok', 'broken', 'conteudo', 'atencao', 'pending'].forEach(function (k) {
             if (!s[k]) return;
@@ -423,11 +423,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         var sl = calcStats('link'), sd = calcStats('doi');
-        var pctL = calcPct(sl), pctD = calcPct(sd);
-        var pct = null;
-        if (pctL !== null && pctD !== null) pct = (pctL + pctD) / 2;
-        else if (pctL !== null) pct = pctL;
-        else if (pctD !== null) pct = pctD;
+        // Mesma media ponderada do cartao de saude geral (ver
+        // updateGeneralHealth), para o relatorio nao mostrar outro numero.
+        var pct = calcPct({
+            ok: sl.ok + sd.ok,
+            broken: sl.broken + sd.broken,
+            conteudo: sl.conteudo + sd.conteudo
+        });
         var r = pct !== null ? healthLabel(pct) : ['–', '#999'];
 
         var causeLabels = {

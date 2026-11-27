@@ -28,6 +28,23 @@ Este documento registra a evolução do plugin resultante dessa parceria.
 
 ---
 
+## [0.5.4.1] — 2026-11-27
+
+### Corrigido
+- O gráfico de rosca do painel deixava os arquivos defeituosos fora do
+  total, e as fatias passavam de uma volta completa quando havia algum.
+- O relatório de problemas usava a média simples de links e DOIs; agora
+  usa a mesma média ponderada do cartão de saúde geral.
+- A troca de idioma pela barra de bandeiras acumulava `?licLocale=` na URL
+  a partir da segunda troca.
+
+### Limpeza
+- Removida a string de locale `guideHealth`, substituída por
+  `guideWeighted` e sem uso.
+- Cabeçalho de licença acrescentado a `templates/status.tpl`.
+
+---
+
 ## [0.5.4] — 2026-11-27
 
 ### Segurança

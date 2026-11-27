@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Link Integrity Checker 0.5.4\n"
+"Project-Id-Version: Link Integrity Checker 0.5.4.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -209,9 +209,6 @@ msgstr "Non c'è nulla da verificare: l'articolo non ha un DOI registrato, oppur
 
 msgid "plugins.generic.linkIntegrity.explainPending"
 msgstr "Non ancora verificato in questa sessione. Usare Verifica tutti, oppure il pulsante Verifica della riga."
-
-msgid "plugins.generic.linkIntegrity.guideHealth"
-msgstr "Lo stato generale è la media fra la percentuale di COLLEGAMENTI e quella di DOI che hanno risposto bene. I record in ATTENZIONE restano fuori, perché non sono stati verificati."
 
 msgid "plugins.generic.linkIntegrity.healthLinksLabel"
 msgstr "Stato dei COLLEGAMENTI"

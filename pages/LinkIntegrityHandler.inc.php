@@ -403,6 +403,10 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
             return array();
         }
 
+        // getRequestUrl() ja traz a query string; sem corta-la, a segunda
+        // troca de idioma gerava "?licLocale=a?licLocale=b".
+        $baseUrl = strtok((string) $request->getRequestUrl(), '?');
+
         $out = array();
         foreach ($supported as $code => $name) {
             $out[] = array(
@@ -410,7 +414,7 @@ class LinkIntegrityHandler extends LinkIntegrityHandlerBase
                 'flag' => isset($flags[$code]) ? $flags[$code] : '',
                 'label' => $name !== '' ? $name : $code,
                 'current' => $code === $current,
-                'url' => $request->getRequestUrl() . '?licLocale=' . urlencode($code),
+                'url' => $baseUrl . '?licLocale=' . urlencode((string) $code),
             );
         }
         return $out;

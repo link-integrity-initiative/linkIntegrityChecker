@@ -1,6 +1,10 @@
 {**
  * templates/status.tpl
  *
+ * Copyright (c) 2026 Periódico Tchê Química
+ * Copyright (c) 2026 WebSotto (https://websotto.com.br/)
+ * Distributed under the GNU General Public License v3 (or later).
+ *
  * Página pública de transparência do Link Integrity Checker.
  *
  * Só agregados: nenhuma lista de artigos, nenhum endereço individual,

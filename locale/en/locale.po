@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Link Integrity Checker 0.5.4\n"
+"Project-Id-Version: Link Integrity Checker 0.5.4.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -209,9 +209,6 @@ msgstr "There is nothing to check: the article has no DOI registered, or no publ
 
 msgid "plugins.generic.linkIntegrity.explainPending"
 msgstr "Not yet checked in this session. Use Test All, or the row Test button."
-
-msgid "plugins.generic.linkIntegrity.guideHealth"
-msgstr "Overall health is the average of the percentage of LINKS and of DOIs that responded well. Records in ATTENTION are excluded, since they were not tested."
 
 msgid "plugins.generic.linkIntegrity.healthLinksLabel"
 msgstr "LINK health"

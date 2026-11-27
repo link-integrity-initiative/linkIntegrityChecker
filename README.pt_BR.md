@@ -1,12 +1,12 @@
 # Link Integrity Checker — Plugin para OJS
 
 [![OJS](https://img.shields.io/badge/OJS-3.3%20%7C%203.4%20%7C%203.5-brightgreen)](https://pkp.sfu.ca/ojs/)
-[![Versão](https://img.shields.io/badge/vers%C3%A3o-0.5.4.0-blue)](version.xml)
+[![Versão](https://img.shields.io/badge/vers%C3%A3o-0.5.4.1-blue)](version.xml)
 [![Licença](https://img.shields.io/badge/licen%C3%A7a-GPL--3.0-lightgrey)](LICENSE)
 
 [English](README.md) · **Português**
 
-**⬇️ Pacote de instalação:** [linkIntegrityChecker-0.5.4.0.tar.gz](https://github.com/link-integrity-initiative/linkIntegrityChecker/releases/download/0.5.4.0/linkIntegrityChecker-0.5.4.0.tar.gz) (OJS 3.3, 3.4 e 3.5) — ou veja todas as [Releases](../../releases).
+**⬇️ Pacote de instalação:** [linkIntegrityChecker-0.5.4.1.tar.gz](https://github.com/link-integrity-initiative/linkIntegrityChecker/releases/download/0.5.4.1/linkIntegrityChecker-0.5.4.1.tar.gz) (OJS 3.3, 3.4 e 3.5) — ou veja todas as [Releases](../../releases).
 
 > **Mantido pela [Link Integrity Initiative](https://github.com/link-integrity-initiative).**
 
@@ -14,13 +14,13 @@
 
 | Versão do OJS | Branch | Versão do plugin |
 |---|---|---|
-| 3.3, 3.4, 3.5 | `stable-3_5_0` *(padrão)* | 0.5.4.0 |
+| 3.3, 3.4, 3.5 | `stable-3_5_0` *(padrão)* | 0.5.4.1 |
 
 Um único pacote atende as três linhas do OJS (uma camada de
 compatibilidade escolhe a API certa em tempo de execução). Não renomeie a
 pasta: ela precisa se chamar `linkIntegrityChecker`.
 
-**Versão:** 0.5.4 · **Compatibilidade:** OJS 3.3, 3.4 e 3.5 (LTS) · **Licença:** GPL v3+
+**Versão:** 0.5.4.1 · **Compatibilidade:** OJS 3.3, 3.4 e 3.5 (LTS) · **Licença:** GPL v3+
 
 Plugin genérico para o Open Journal Systems (OJS) que audita, com um
 clique, a integridade dos **links** e **DOIs** dos artigos publicados na

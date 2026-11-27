@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Link Integrity Checker 0.5.4\n"
+"Project-Id-Version: Link Integrity Checker 0.5.4.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -209,9 +209,6 @@ msgstr "Denetlenecek bir şey yok: makalenin kayıtlı DOI'si ya da yayımlanmı
 
 msgid "plugins.generic.linkIntegrity.explainPending"
 msgstr "Bu oturumda henüz denetlenmedi. Tümünü Sına'yı ya da satırdaki Sına düğmesini kullanın."
-
-msgid "plugins.generic.linkIntegrity.guideHealth"
-msgstr "Genel durum, iyi yanıt veren BAĞLANTILAR ile DOI'lerin yüzdelerinin ortalamasıdır. DİKKAT durumundaki kayıtlar sınanmadıkları için hesaba katılmaz."
 
 msgid "plugins.generic.linkIntegrity.healthLinksLabel"
 msgstr "BAĞLANTILARIN durumu"

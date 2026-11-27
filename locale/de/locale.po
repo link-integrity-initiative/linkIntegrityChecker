@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Link Integrity Checker 0.5.4\n"
+"Project-Id-Version: Link Integrity Checker 0.5.4.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -209,9 +209,6 @@ msgstr "Es gibt nichts zu prüfen: Der Artikel hat keinen DOI hinterlegt oder ke
 
 msgid "plugins.generic.linkIntegrity.explainPending"
 msgstr "In dieser Sitzung noch nicht geprüft. Verwenden Sie Alle prüfen oder die Schaltfläche Prüfen in der Zeile."
-
-msgid "plugins.generic.linkIntegrity.guideHealth"
-msgstr "Der Gesamtzustand ist der Mittelwert aus dem Anteil der LINKS und dem der DOIs, die gut geantwortet haben. Einträge mit ACHTUNG bleiben unberücksichtigt, da sie nicht geprüft wurden."
 
 msgid "plugins.generic.linkIntegrity.healthLinksLabel"
 msgstr "Zustand der LINKS"

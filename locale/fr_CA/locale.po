@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Link Integrity Checker 0.5.4\n"
+"Project-Id-Version: Link Integrity Checker 0.5.4.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -209,9 +209,6 @@ msgstr "Il n'y a rien à vérifier : l'article n'a pas de DOI enregistré, ou pa
 
 msgid "plugins.generic.linkIntegrity.explainPending"
 msgstr "Pas encore vérifié dans cette session. Utilisez Tout tester, ou le bouton Tester de la ligne."
-
-msgid "plugins.generic.linkIntegrity.guideHealth"
-msgstr "L'état général est la moyenne du pourcentage de LIENS et de DOI ayant bien répondu. Les enregistrements en ATTENTION sont exclus, car ils n'ont pas été testés."
 
 msgid "plugins.generic.linkIntegrity.healthLinksLabel"
 msgstr "État des LIENS"

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Link Integrity Checker 0.5.4\n"
+"Project-Id-Version: Link Integrity Checker 0.5.4.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -209,9 +209,6 @@ msgstr "Tidak ada yang bisa diperiksa: artikel belum punya DOI terdaftar, atau b
 
 msgid "plugins.generic.linkIntegrity.explainPending"
 msgstr "Belum diperiksa pada sesi ini. Gunakan Uji Semua, atau tombol Uji pada barisnya."
-
-msgid "plugins.generic.linkIntegrity.guideHealth"
-msgstr "Kondisi umum adalah rata-rata persentase TAUTAN dan DOI yang merespons dengan baik. Entri berstatus PERHATIAN tidak diikutkan, karena memang belum diuji."
 
 msgid "plugins.generic.linkIntegrity.healthLinksLabel"
 msgstr "Kondisi TAUTAN"
